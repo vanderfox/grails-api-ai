@@ -34,10 +34,14 @@ trait AiWebhookController implements WebAttributes {
     @Action
     def index() {
         Fulfillment output = new Fulfillment()
-        doWebhook(gson.fromJson(request.getReader(), AIWebhookServlet.AIWebhookRequest.class), output)
+        String incomingJson = request.JSON.toString()
+        log.debug("incoming json=${incomingJson}")
+        doWebhook(gson.fromJson(incomingJson, AIWebhookServlet.AIWebhookRequest.class), output)
         response.setCharacterEncoding(RESPONSE_CHARACTER_ENCODING)
         response.setContentType(RESPONSE_CONTENT_TYPE)
         gson.toJson(output, response.getWriter())
+        response.flushBuffer()
+        null
     }
 
 
