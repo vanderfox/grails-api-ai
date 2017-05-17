@@ -39,8 +39,10 @@ trait AiWebhookController implements WebAttributes {
         doWebhook(gson.fromJson(incomingJson, AIWebhookServlet.AIWebhookRequest.class), output)
         response.setCharacterEncoding(RESPONSE_CHARACTER_ENCODING)
         response.setContentType(RESPONSE_CONTENT_TYPE)
+        response.setHeader('Access-Control-Allow-Origin','*')
+
         gson.toJson(output, response.getWriter())
-        response.flushBuffer()
+        response.flushBuffer() // these 2 lines force grails to bypass the view layer
         null
     }
 
