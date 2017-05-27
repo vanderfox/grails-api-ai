@@ -12,7 +12,7 @@ plugins {
     id "io.spring.dependency-management" version "0.5.2.RELEASE"
     id "com.jfrog.bintray" version "1.2"
 }
-version "0.1.1"
+version "0.1.2"
 group "org.grails.plugins"
 
 
@@ -80,6 +80,8 @@ publishing {
                 }
             }
             from components.java
+            artifact sourcesJar
+            artifact javadocJar
             def descriptor =
                     artifacts = ["build/libs/grails-api-ai-${version}.jar",sourcesJar]
 
@@ -96,6 +98,7 @@ bintray {
         repo = "grails-api-ai"
         issueTrackerUrl = "https://github.com/vanderfox/grails-api-ai/issues"
         vcsUrl = "https://github.com/vanderfox/grails-api-ai"
+        publications = ['mavenJava']
         version {
             attributes = ['grails-api-ai': "$project.group:grails-api-ai"]
             name = project.version
