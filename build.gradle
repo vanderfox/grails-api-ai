@@ -94,14 +94,15 @@ bintray {
         user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
         key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
         userOrg = 'vanderfox' // If you want to publish to an organization
-        name = "grails-api-ai"
-        repo = "grails-api-ai"
-        issueTrackerUrl = "https://github.com/vanderfox/grails-api-ai/issues"
-        vcsUrl = "https://github.com/vanderfox/grails-api-ai"
+        name = "grails-dialogflow"
+        repo = "grails-dialogflow"
+        issueTrackerUrl = "https://github.com/vanderfox/grails-dialogflow/issues"
+        vcsUrl = "https://github.com/vanderfox/grails-dialogflow"
         publications = ['mavenJava']
         version {
-            attributes = ['grails-api-ai': "$project.group:grails-api-ai"]
+            attributes = ['grails-dialogflow': "$project.group:grails-dialogflow"]
             name = project.version
         }
+        licenses = ['Apache-2.0']
     }
 }
